@@ -4,7 +4,7 @@ const next = require('next');
 
 const api = require('./api');
 
-const dev = process.env.NODE_ENV !== 'dev';
+const dev = process.env.NODE_ENV !== 'production';
 const app = next({dev});
 const handle = app.getRequestHandler();
 
@@ -13,7 +13,7 @@ app.prepare().then(() => {
 
       server.use('/api', api);
 
-      server.all('*', (req, res) => {
+      server.get('*', (req, res) => {
         return handle(req, res)
       });
 
