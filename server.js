@@ -5,6 +5,7 @@ const next = require('next');
 const api = require('./api');
 
 const dev = process.env.NODE_ENV !== 'production';
+const PORT = dev ? 3000 : 80;
 const app = next({dev});
 const handle = app.getRequestHandler();
 
@@ -19,7 +20,7 @@ app.prepare().then(() => {
         return handle(req, res)
       });
 
-      server.listen(3000, (err) => {
+      server.listen(PORT, (err) => {
         if (err) {
           throw err;
         }
