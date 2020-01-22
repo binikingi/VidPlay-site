@@ -17,7 +17,7 @@
   },
   "scripts": {
     "dev": "node ./node_modules/nodemon/bin/nodemon server.js",
-    "build": "next build && node server",
+    "build": "PORT=$PORT next build && node server",
     "start": "next build && node server"
   },
   "repository": {
